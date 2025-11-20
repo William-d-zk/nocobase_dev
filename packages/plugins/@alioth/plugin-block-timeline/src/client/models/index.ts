@@ -8,5 +8,8 @@
  */
 
 import { ModelConstructor } from '@nocobase/flow-engine';
+import { TimelineBlockModel } from './TimelineBlockModel';
 
-export default {} as Record<string, ModelConstructor>;
+export default {
+  TimelineBlockModel,
+} as Record<string, ModelConstructor>;

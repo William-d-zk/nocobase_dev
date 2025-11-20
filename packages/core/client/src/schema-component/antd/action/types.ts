@@ -13,6 +13,7 @@ import { ComponentType } from 'react';
 
 export type OpenSize = 'small' | 'middle' | 'large';
 export interface ActionContextProps {
+  setActionContext: any;
   /** Currently only used for Action.Popover */
   button?: React.JSX.Element;
   visible?: boolean;
