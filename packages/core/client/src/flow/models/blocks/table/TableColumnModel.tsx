@@ -320,7 +320,7 @@ TableColumnModel.registerFlow({
         },
       },
       defaultParams: {
-        width: 100,
+        width: 150,
       },
       handler(ctx, params) {
         ctx.model.setProps('width', params.width);
@@ -362,6 +362,31 @@ TableColumnModel.registerFlow({
     model: {
       title: tExpr('Field component'),
       use: 'displayFieldComponent',
+    },
+    sorter: {
+      title: tExpr('Sortable'),
+      uiSchema(ctx) {
+        const targetInterface = ctx.app.dataSourceManager.collectionFieldInterfaceManager.getFieldInterface(
+          ctx.model.collectionField.interface,
+        );
+        if (!targetInterface.sortable) {
+          return;
+        }
+        return {
+          sorter: {
+            'x-component': 'Switch',
+            'x-decorator': 'FormItem',
+          },
+        };
+      },
+      defaultParams: {
+        sorter: false,
+      },
+      handler(ctx, params) {
+        ctx.model.setProps({
+          sorter: params.sorter,
+        });
+      },
     },
     fieldNames: {
       use: 'titleField',
