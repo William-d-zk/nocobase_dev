@@ -48,6 +48,7 @@ TimelineBlockModel.define({
 
 TimelineBlockModel.registerFlow({
   key: 'timelineSettings',
+  sort: 200,
   steps: {
     setProps: {
       title: tExpr('Settings'),
