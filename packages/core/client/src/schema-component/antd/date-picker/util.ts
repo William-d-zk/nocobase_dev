@@ -112,12 +112,12 @@ export const handleDateChangeOnForm = (value, dateOnly, utc, picker, showTime, g
 export const mapDatePicker = function () {
   const isMobileMedia = isMobile();
   return (props: any) => {
-    const { dateOnly, showTime, picker = 'date', utc, gmt, underFilter } = props;
+    const { dateOnly, showTime, picker = 'date', utc, gmt, underFilter, dateFormat, ...restProps } = props;
     const format = getDefaultFormat(props);
     const onChange = props.onChange;
 
     return {
-      ...props,
+      ...restProps,
       inputReadOnly: isMobileMedia,
       format: format,
       value: str2moment(props.value, props),
@@ -142,9 +142,9 @@ export const mapRangePicker = function () {
   return (props: any) => {
     const format = getDefaultFormat(props) as any;
     const onChange = props.onChange;
-    const { dateOnly, showTime, picker = 'date', utc, gmt, underFilter } = props;
+    const { dateOnly, showTime, picker = 'date', utc, gmt, underFilter, dateFormat, ...restProps } = props;
     return {
-      ...props,
+      ...restProps,
       format: format,
       value: str2moment(props.value, props),
       inputReadOnly: isMobileMedia,

@@ -199,10 +199,11 @@ DatePicker.RangePicker = function RangePicker(props: any) {
 
   const targetPicker = value ? inferPickerType(value?.[0], picker) : picker;
   const targetDateFormat = getPickerFormat(targetPicker) || format;
+  const { dateFormat, ...restProps } = props;
   const newProps: any = {
     utc,
     presets,
-    ...props,
+    ...restProps,
     format: getDateTimeFormat(targetPicker, targetDateFormat, showTime, timeFormat),
     picker: targetPicker,
     showTime: showTime ? { defaultValue: [dayjs('00:00:00', 'HH:mm:ss'), dayjs('23:59:59', 'HH:mm:ss')] } : false,
@@ -286,10 +287,11 @@ DatePicker.FilterWithPicker = function FilterWithPicker(props: any) {
   const targetDateFormat = getPickerFormat(initPicker) || format;
   const { t } = useTranslation();
 
+  const { dateFormat, ...restProps } = props;
   const newProps = {
     utc,
     inputReadOnly: isMobileMedia,
-    ...props,
+    ...restProps,
     underFilter: true,
     showTime: showTime ? { defaultValue: dayjs('00:00:00', 'HH:mm:ss') } : false,
     format: getDateTimeFormat(targetPicker, targetDateFormat, showTime, timeFormat),

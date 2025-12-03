@@ -29,9 +29,9 @@ interface IconPickerProps {
 
 const groupByIconName = (data) => {
   return groupBy(data, (str) => {
-    if (str.endsWith('outlined')) return 'Outlined';
-    if (str.endsWith('filled')) return 'Filled';
-    if (str.endsWith('twotone')) return 'TwoTone';
+    if (str.endsWith('Outlined')) return 'Outlined';
+    if (str.endsWith('Filled')) return 'Filled';
+    if (str.endsWith('TwoTone')) return 'TwoTone';
   });
 };
 
@@ -45,7 +45,7 @@ function IconPicker(props: IconPickerProps) {
   const [type, setType] = useState('Outlined');
   const { t } = useTranslation();
   const groupIconData = groupByIconName(availableIcons);
-
+  console.log('IconPicker', icons);
   const style: any = {
     width: '26em',
     [`${searchable ? 'height' : 'maxHeight'}`]: '20em',
@@ -91,7 +91,7 @@ function IconPicker(props: IconPickerProps) {
               return (
                 <span
                   key={key}
-                  title={key.replace(/outlined|filled|twotone$/i, '')}
+                  title={key.replace(/Outlined|Filled|TwoTone$/i, '')}
                   style={{ fontSize: iconSize, marginRight: 10, cursor: 'pointer' }}
                   onClick={() => {
                     onChange(key);

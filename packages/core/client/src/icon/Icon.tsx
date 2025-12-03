@@ -16,14 +16,14 @@ let IconFont: any;
 export const icons = new Map<string, any>();
 
 export function registerIcon(type: string, icon: any = IconFont) {
-  icons.set(type.toLowerCase(), icon);
+  icons.set(type, icon);
 }
 
 export function hasIcon(type: string) {
   if (!type) {
     return false;
   }
-  return icons.has(type.toLowerCase());
+  return icons.has(type);
 }
 
 export function registerIcons(components) {
@@ -47,8 +47,8 @@ export const Icon = (props: IconProps) => {
   if (component) {
     return <AntdIcon component={component} {...restProps} />;
   }
-  if (type && icons.has(type.toLowerCase())) {
-    const IconComponent = icons.get(type.toLowerCase());
+  if (type && icons.has(type)) {
+    const IconComponent = icons.get(type);
     return <IconComponent {...restProps} />;
   }
   if (type && IconFont) {
