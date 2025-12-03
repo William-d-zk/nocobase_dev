@@ -1,0 +1,13 @@
+{
+  "name": "@alioth/plugin-block-proc-editor",
+  "version": "2.0.0-alpha.50",
+  "main": "dist/server/index.js",
+  "dependencies": {
+    "reactflow": "^11.11.4"
+  },
+  "peerDependencies": {
+    "@nocobase/client": "2.x",
+    "@nocobase/server": "2.x",
+    "@nocobase/test": "2.x"
+  }
+}

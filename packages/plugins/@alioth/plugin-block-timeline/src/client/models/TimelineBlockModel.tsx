@@ -37,7 +37,6 @@ export class TimelineBlockModel extends CollectionBlockModel {
   renderComponent() {
     const { childrenField, labelField, viewMode, dotField, colorField, dateFormatField } = this.props;
     const data = this.resource?.getData() || [];
-    console.log('TimelineBlockModel data:', data);
     const items = data.map((record) => ({
       children: childrenField ? record[childrenField] : 'No content',
       label: labelField ? dayjs(record[labelField]).format(dateFormatField || 'YYYY-MM-DD') : undefined,
@@ -45,7 +44,7 @@ export class TimelineBlockModel extends CollectionBlockModel {
       color: colorField ? record[colorField] : undefined,
     }));
 
-    return <Timeline mode={viewMode} items={items} />;
+    return <Timeline mode={viewMode} items={items} style={{ height: this.props.height || '400px' }} />;
   }
 }
 
@@ -59,6 +58,21 @@ TimelineBlockModel.registerFlow({
     dataScope: {
       use: 'dataScope',
       title: tExpr('Data scope'),
+    },
+    vHeight: {
+      title: tExpr('Height'),
+      uiSchema(ctx) {
+        return {
+          vHeight: {
+            'x-component': 'Input',
+            'x-decorator': 'FormItem',
+            default: '400px',
+          },
+        };
+      },
+      async handler(ctx, params) {
+        ctx.model.setProps({ vHeight: params.vHeight || '400px' });
+      },
     },
     viewMode: {
       title: tExpr('View mode'),
