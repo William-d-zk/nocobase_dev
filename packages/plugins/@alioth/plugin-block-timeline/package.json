@@ -1,8 +1,8 @@
 {
   "name": "@alioth/plugin-block-timeline",
-  "displayName": "Alioth.Timeline: Timeline Block",
-  "displayName.zh-CN": "区块：Alioth 时间线",
-  "version": "2.0.0-alpha.50",
+  "displayName": "Alioth.Block: Timeline",
+  "displayName.zh-CN": "Alioth 区块：时间线",
+  "version": "2.0.0-alpha.52",
   "main": "dist/server/index.js",
   "dependencies": {
     "dayjs": "^1.11.7",
